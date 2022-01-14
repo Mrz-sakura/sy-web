@@ -1,29 +1,30 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter, { RouteConfig } from "vue-router";
+import * as path from "path";
 
-Vue.use(VueRouter)
-
+Vue.use(VueRouter);
+/**
+ * @type {RouteConfig}
+ */
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+  { path: "/", redirect: "/index" },
+  { path: "/index", name: "Index", component: () => import("../views/index") }
+];
+
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
+// 获取到原始push方法重写
+const push = VueRouter.prototype.push;
+router.push = location =>{
+  const _path = router.currentRoute.path
+  if(_path === location){
+    return
+  }
+  push.call(this,location)
+}
 
-export default router
+export default router;

@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  border: 0
+}
+
+ul li {
+  list-style-type: none
+}
+
+a {
+  color: inherit
+}
+
+i {
+  font-style: normal
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 14px;
+  border: 0;
+  outline: 0
+}
+
+button::-moz-focus-inner, input[type=button]::-moz-focus-inner {
+  border: none;
+  padding: 0
+}
+
+a[class|=btn] {
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1
+}
+
+input[type=checkbox], input[type=radio] {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0
+}
